@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayerEntity.class)
 public class DealDamageMixin {
-    @Inject(method = "attack", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "attack", at = @At("HEAD"))
     private void attack(Entity target, CallbackInfo info) {
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
         String primary = DataHandler.getPrimary((IEntityDataSaver) player);
