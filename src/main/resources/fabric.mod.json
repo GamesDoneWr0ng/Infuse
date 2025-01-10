@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "infuse",
+  "version": "${version}",
+  "name": "Infuse",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/infuse/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "org.gamesdonewr0ng.infuse.Infuse"
+    ]
+  },
+  "mixins": [
+    "infuse.mixins.json",
+    {
+      "config": "infuse.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

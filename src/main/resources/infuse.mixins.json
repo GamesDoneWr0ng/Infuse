@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.gamesdonewr0ng.infuse.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BreakBlockMixin",
+    "DealDamageMixin",
+    "EntityDataSaverMixin",
+    "TakeDamageMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
