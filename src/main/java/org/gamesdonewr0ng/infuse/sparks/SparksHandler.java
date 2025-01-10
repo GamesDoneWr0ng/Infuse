@@ -12,9 +12,6 @@ public class SparksHandler {
     public static void handlePlayerAction(ServerPlayerEntity player) {
         Spark support = getSupport(player);
         Spark primary = getPrimary(player);
-        if (support == null || primary == null) {
-            return;
-        }
 
         boolean activePrimary = DataHandler.getActivePrimary((IEntityDataSaver) player);
         int cooldownPrimary = DataHandler.getCooldownPrimary((IEntityDataSaver) player);
@@ -22,9 +19,8 @@ public class SparksHandler {
         boolean activeSupport = DataHandler.getActiveSupport((IEntityDataSaver) player);
         int cooldownSupport = DataHandler.getCooldownSupport((IEntityDataSaver) player);
 
-
-        support.passive(player);
-        primary.passive(player);
+        if (primary != null) {primary.passive(player);}
+        if (support != null) {support.passive(player);}
 
 
         // active ability
@@ -39,7 +35,7 @@ public class SparksHandler {
         } else if (cooldownPrimary > 0) {
             DataHandler.setCooldownPrimary((IEntityDataSaver) player, cooldownPrimary - 1);
         } else {
-            if (offhand) {
+            if (primary != null && offhand) {
                 // Check if the player is sneaking
                 if (!player.isSneaking()) {
                     primary.activate(player);
@@ -53,7 +49,7 @@ public class SparksHandler {
         } else if (cooldownSupport > 0) {
             DataHandler.setCooldownSupport((IEntityDataSaver) player, cooldownSupport - 1);
         } else {
-            if (offhand) {
+            if (support != null && offhand) {
                 // Check if the player is sneaking
                 if (player.isSneaking()) {
                     support.activate(player);
