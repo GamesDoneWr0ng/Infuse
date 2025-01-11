@@ -7,9 +7,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.gamesdonewr0ng.infuse.commands.InfuseCommand;
-import org.gamesdonewr0ng.infuse.commands.TrustCommand;
-import org.gamesdonewr0ng.infuse.commands.WithdrawCommand;
+import org.gamesdonewr0ng.infuse.commands.*;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.sparks.primary.Feather;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
@@ -25,6 +23,8 @@ public class Infuse implements ModInitializer {
             InfuseCommand.register(dispatcher);
             TrustCommand.register(dispatcher);
             WithdrawCommand.register(dispatcher);
+            PDrain.register(dispatcher);
+            SDrain.register(dispatcher);
         });
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {

@@ -5,8 +5,10 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "BreakBlockMixin",
+    "ConsumeItemMixin",
     "DealDamageMixin",
     "EntityDataSaverMixin",
+    "ModifyDamageMixin",
     "SendPacketMixin",
     "TakeDamageMixin"
   ],
