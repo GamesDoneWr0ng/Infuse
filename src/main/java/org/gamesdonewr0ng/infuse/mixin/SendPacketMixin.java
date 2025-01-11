@@ -1,6 +1,9 @@
 package org.gamesdonewr0ng.infuse.mixin;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NbtByte;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketCallbacks;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.*;
@@ -29,7 +32,7 @@ public class SendPacketMixin {
 
     @Inject(method = "send", at = @At("HEAD"), cancellable = true)
     public void sendPacket(Packet<?> packet, @Nullable PacketCallbacks callbacks, CallbackInfo info) {
-        /*if (!(packet instanceof WorldTimeUpdateS2CPacket || packet instanceof ChunkDataS2CPacket || packet instanceof KeepAliveS2CPacket || packet instanceof GameMessageS2CPacket)) {
+        /*if (!(packet instanceof WorldTimeUpdateS2CPacket || packet instanceof ChunkDataS2CPacket || packet instanceof KeepAliveS2CPacket || packet instanceof GameMessageS2CPacket || packet instanceof EntityS2CPacket)) {
             logger.info(packet.toString());
         }*/
         if (packet instanceof EntityEquipmentUpdateS2CPacket equipmentUpdate) {
@@ -47,21 +50,25 @@ public class SendPacketMixin {
                     break;
                 }
             }
-        } else if (packet instanceof EntityStatusS2CPacket statusUpdate) {
-            for (ServerWorld world : server.getWorlds()) {
-                Entity entity = statusUpdate.getEntity(world);
-                if (entity != null) {
-                    if (entity instanceof ServerPlayerEntity player) {
-                        if (DataHandler.getPrimary((IEntityDataSaver) player).equals("Invisibility") &&
-                                DataHandler.getActivePrimary((IEntityDataSaver) player) &&
-                                DataHandler.getCooldownPrimary((IEntityDataSaver) player) != 0)
-                        {
-                            info.cancel();
-                        }
-                    }
-                    break;
-                }
-            }
+        } else if (packet instanceof NbtQueryResponseS2CPacket nbtResponse) {
+           NbtCompound nbt = nbtResponse.getNbt();
+           if (nbt != null && nbt.contains("infuse_data") && nbt.contains("Inventory")) {
+               NbtCompound infuseData = (NbtCompound) nbt.get("infuse_data");
+               if (infuseData.getString("infuse_primary").equals("Invisibility") &&
+                   infuseData.getBoolean("infuse_active_primary") &&
+                   infuseData.getInt("infuse_cooldown_primary") != 0)
+               {
+                   NbtList inventory = (NbtList) nbt.get("Inventory");
+                   for (net.minecraft.nbt.NbtElement nbtElement : inventory) {
+                       for (int slot : new int[]{100, 101, 102, 103, nbt.getInt("SelectedItemSlot")}) {
+                           NbtCompound item = (NbtCompound) nbtElement;
+                           if (item.getByte("Slot") == slot) {
+                               item.putString("id", "minecraft:air");
+                           }
+                       }
+                   }
+               }
+           }
         }
     }
 }

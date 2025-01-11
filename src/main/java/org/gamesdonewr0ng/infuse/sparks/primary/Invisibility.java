@@ -39,7 +39,8 @@ public class Invisibility extends Spark {
                                 Pair.of(EquipmentSlot.CHEST,    ItemStack.EMPTY),
                                 Pair.of(EquipmentSlot.LEGS,     ItemStack.EMPTY),
                                 Pair.of(EquipmentSlot.FEET,     ItemStack.EMPTY),
-                                Pair.of(EquipmentSlot.MAINHAND, ItemStack.EMPTY)
+                                Pair.of(EquipmentSlot.MAINHAND, ItemStack.EMPTY),
+                                Pair.of(EquipmentSlot.OFFHAND,  ItemStack.EMPTY)
                         ))
                 );
             }
@@ -54,10 +55,10 @@ public class Invisibility extends Spark {
                 if (!player.equals(otherPlayer)) {
                     otherPlayer.networkHandler.sendPacket(
                             new EntityEquipmentUpdateS2CPacket(player.getId(), List.of(
-                                    Pair.of(EquipmentSlot.HEAD,     armor.get(0)),
-                                    Pair.of(EquipmentSlot.CHEST,    armor.get(1)),
-                                    Pair.of(EquipmentSlot.LEGS,     armor.get(2)),
-                                    Pair.of(EquipmentSlot.FEET,     armor.get(3)),
+                                    Pair.of(EquipmentSlot.HEAD,     armor.get(3)),
+                                    Pair.of(EquipmentSlot.CHEST,    armor.get(2)),
+                                    Pair.of(EquipmentSlot.LEGS,     armor.get(1)),
+                                    Pair.of(EquipmentSlot.FEET,     armor.get(0)),
                                     Pair.of(EquipmentSlot.MAINHAND, player.getMainHandStack())
                             ))
                     );

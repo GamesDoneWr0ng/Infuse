@@ -13,7 +13,7 @@ import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import java.util.HashMap;
 
 public class Feather extends Spark {
-    private static HashMap<ServerPlayerEntity, HashMap<BlockPos, BlockState>> blocks = new HashMap<>();
+    private static final HashMap<ServerPlayerEntity, HashMap<BlockPos, BlockState>> blocks = new HashMap<>();
 
     public void removeBlocks(ServerPlayerEntity player) {
         for (BlockPos pos : blocks.get(player).keySet()) {
