@@ -6,9 +6,8 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
-import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
 public class Frost extends Spark {
     public int getCooldown() {return 60*20;}
@@ -48,7 +47,6 @@ public class Frost extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
-        DataHandler.setCooldownPrimary((IEntityDataSaver) player, 30*20);
+        SparksHandler.activatePrimary(player, 30*20);
     }
 }

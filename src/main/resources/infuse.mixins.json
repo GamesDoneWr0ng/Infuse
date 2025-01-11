@@ -7,6 +7,7 @@
     "BreakBlockMixin",
     "DealDamageMixin",
     "EntityDataSaverMixin",
+    "SendPacketMixin",
     "TakeDamageMixin"
   ],
   "injectors": {

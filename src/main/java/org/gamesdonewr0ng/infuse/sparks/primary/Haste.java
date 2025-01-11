@@ -3,9 +3,8 @@ package org.gamesdonewr0ng.infuse.sparks.primary;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
-import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
 public class Haste extends Spark {
     public int getCooldown() {return 75*20;}
@@ -23,8 +22,7 @@ public class Haste extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setCooldownPrimary((IEntityDataSaver) player, 45*20);
-        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
+        SparksHandler.activatePrimary(player, 45*20);
 
         player.addStatusEffect(new StatusEffectInstance(
                 StatusEffects.HASTE,

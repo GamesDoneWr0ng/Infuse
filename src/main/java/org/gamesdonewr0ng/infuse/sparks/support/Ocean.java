@@ -3,9 +3,8 @@ package org.gamesdonewr0ng.infuse.sparks.support;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
-import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
 public class Ocean extends Spark {
     public int getCooldown() {return 60*20;}
@@ -37,8 +36,7 @@ public class Ocean extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setActiveSupport((IEntityDataSaver) player, true);
-        DataHandler.setCooldownSupport((IEntityDataSaver) player, 30*20);
+        SparksHandler.activateSupport(player, 30*20);
     }
 
     public void active(ServerPlayerEntity player) {

@@ -31,7 +31,7 @@ public class DealDamageMixin {
                     !player.hasVehicle() &&
                     !player.isSprinting() &&
                      player.getAttackCooldownProgress(0.5F) > 0.9F &&
-                    Math.random() > 0.75) {
+                    Math.random() > 0.5F) {
 
                 World world = target.getWorld();
                 if (!world.isClient() && world instanceof ServerWorld serverWorld) {

@@ -7,14 +7,21 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
-import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
 import java.util.HashMap;
 
 public class Feather extends Spark {
     private static HashMap<ServerPlayerEntity, HashMap<BlockPos, BlockState>> blocks = new HashMap<>();
+
+    public void removeBlocks(ServerPlayerEntity player) {
+        for (BlockPos pos : blocks.get(player).keySet()) {
+            ServerWorld world = player.getServerWorld();
+            world.setBlockState(pos, blocks.get(player).get(pos));
+        }
+        blocks.remove(player);
+    }
 
     public int getCooldown() {return 30*20;}
 
@@ -67,8 +74,7 @@ public class Feather extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
-        DataHandler.setCooldownPrimary((IEntityDataSaver) player, 40);
+        SparksHandler.activatePrimary(player, 40);
 
         player.addStatusEffect(new StatusEffectInstance(
                 StatusEffects.LEVITATION,

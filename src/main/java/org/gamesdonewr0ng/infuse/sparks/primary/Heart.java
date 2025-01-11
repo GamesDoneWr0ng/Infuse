@@ -7,6 +7,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
 public class Heart extends Spark {
@@ -27,8 +28,7 @@ public class Heart extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
-        DataHandler.setCooldownPrimary((IEntityDataSaver) player, 30*20);
+        SparksHandler.activatePrimary(player, 30*20);
         EntityAttributeInstance attributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
         attributeInstance.removeModifier(Identifier.of("infuse", "heart"));
         attributeInstance.addTemporaryModifier(

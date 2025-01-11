@@ -2,16 +2,30 @@ package org.gamesdonewr0ng.infuse.sparks;
 
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.Colors;
 import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.primary.*;
 import org.gamesdonewr0ng.infuse.sparks.support.*;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
 public class SparksHandler {
-    public static void handlePlayerAction(ServerPlayerEntity player) {
+    public static void handlePlayerAction(ServerPlayerEntity player, boolean display) {
         Spark support = getSupport(player);
         Spark primary = getPrimary(player);
+
+        if (display) {
+            player.networkHandler.sendPacket(new GameMessageS2CPacket(Text.literal("Support %s %s %s Primary %s %s %s".formatted(
+                    DataHandler.getSupport((IEntityDataSaver) player),
+                    DataHandler.getActiveSupport((IEntityDataSaver) player) ? "Active" : "",
+                    DataHandler.getCooldownSupport((IEntityDataSaver) player) / 20,
+                    DataHandler.getPrimary((IEntityDataSaver) player),
+                    DataHandler.getActivePrimary((IEntityDataSaver) player) ? "Active" : "",
+                    DataHandler.getCooldownPrimary((IEntityDataSaver) player) / 20
+            )), true));
+        }
 
         boolean activePrimary = DataHandler.getActivePrimary((IEntityDataSaver) player);
         int cooldownPrimary = DataHandler.getCooldownPrimary((IEntityDataSaver) player);
@@ -83,6 +97,7 @@ public class SparksHandler {
         }
 
         DataHandler.setSupport((IEntityDataSaver) player, val);
+        player.sendMessage(Text.literal("Set support to " + val).withColor(Colors.GREEN));
     }
 
     public static Spark getSupport(ServerPlayerEntity player) {
@@ -102,6 +117,7 @@ public class SparksHandler {
         }
 
         DataHandler.setPrimary((IEntityDataSaver) player, val);
+        player.sendMessage(Text.literal("Set primary to " + val).withColor(Colors.GREEN));
     }
 
     public static Spark getPrimary(ServerPlayerEntity player) {
@@ -116,5 +132,15 @@ public class SparksHandler {
             case "Invisibility" -> new Invisibility();
             default -> null;
         };
+    }
+
+    public static void activatePrimary(ServerPlayerEntity player, int ticks) {
+        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
+        DataHandler.setCooldownPrimary((IEntityDataSaver) player, ticks);
+    }
+
+    public static void activateSupport(ServerPlayerEntity player, int ticks) {
+        DataHandler.setActiveSupport((IEntityDataSaver) player, true);
+        DataHandler.setCooldownSupport((IEntityDataSaver) player, ticks);
     }
 }

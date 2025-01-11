@@ -10,14 +10,14 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
 public class Lightning extends Spark {
     public int getCooldown() {return 80*20;}
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
-        DataHandler.setCooldownPrimary((IEntityDataSaver) player, 10*20);
+        SparksHandler.activatePrimary(player, 10*20);
     }
 
     public void active(ServerPlayerEntity player) {

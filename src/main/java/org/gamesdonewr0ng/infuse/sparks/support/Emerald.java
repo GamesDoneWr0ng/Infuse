@@ -3,9 +3,8 @@ package org.gamesdonewr0ng.infuse.sparks.support;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
-import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
 public class Emerald extends Spark {
     public int getCooldown() {return 5*60*20;}
@@ -24,8 +23,7 @@ public class Emerald extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
-        DataHandler.setActiveSupport((IEntityDataSaver) player, true);
-        DataHandler.setCooldownSupport((IEntityDataSaver) player, 90*20);
+        SparksHandler.activateSupport(player, 90*20);
         player.addStatusEffect(new StatusEffectInstance(
                 StatusEffects.HERO_OF_THE_VILLAGE,
                 90*20,

@@ -13,8 +13,8 @@ import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 public class TrustCommand {
     private static final String helpMessage = """
 Usage options:
-/trust add <player>
-/trust remove <player>
+/trust add [player]
+/trust remove [player]
 /trust listonline""";
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {

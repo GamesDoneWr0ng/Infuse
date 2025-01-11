@@ -3,9 +3,8 @@ package org.gamesdonewr0ng.infuse.sparks.primary;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
-import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
-import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
 public class Strength extends Spark {
     public int getCooldown() {return 120*20;}
@@ -31,8 +30,7 @@ public class Strength extends Spark {
                 true,
                 true
         ));
-        DataHandler.setActivePrimary((IEntityDataSaver) player, true);
-        DataHandler.setCooldownPrimary((IEntityDataSaver) player, 30*20);
+        SparksHandler.activatePrimary(player, 30*20);
     }
 
     public void disable(ServerPlayerEntity player, boolean primary) {

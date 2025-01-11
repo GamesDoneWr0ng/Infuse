@@ -13,8 +13,8 @@ import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 public class InfuseCommand {
     static String helpMessage = """
 Usage options:
-/infuse setSupport <support> <player>
-/infuse setPrimary <primary> <player>""";
+/infuse setSupport <support> [player]
+/infuse setPrimary <primary> [player]""";
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(CommandManager.literal("infuse")
