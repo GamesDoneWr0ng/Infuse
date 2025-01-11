@@ -31,6 +31,14 @@ public class Invisibility extends Spark {
     }
 
     public void activate(ServerPlayerEntity player) {
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.INVISIBILITY,
+                20*20,
+                1,
+                false,
+                false,
+                true
+        ));
         for (ServerPlayerEntity otherPlayer : player.getServer().getPlayerManager().getPlayerList()) {
             if (!player.equals(otherPlayer)) {
                 otherPlayer.networkHandler.sendPacket(
