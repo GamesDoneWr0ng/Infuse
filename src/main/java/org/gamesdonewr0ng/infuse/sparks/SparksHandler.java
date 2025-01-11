@@ -11,6 +11,8 @@ import org.gamesdonewr0ng.infuse.sparks.primary.*;
 import org.gamesdonewr0ng.infuse.sparks.support.*;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
+import java.util.Arrays;
+
 public class SparksHandler {
     public static void handlePlayerAction(ServerPlayerEntity player, boolean display) {
         Spark support = getSupport(player);
@@ -132,6 +134,14 @@ public class SparksHandler {
             case "Invisibility" -> new Invisibility();
             default -> null;
         };
+    }
+
+    public static void setAbility(ServerPlayerEntity player, String val) {
+        if (Arrays.asList(new String[]{"Speed", "Ocean", "Fire", "Emerald"}).contains(val)) {
+            setSupport(player, val);
+        } else {
+            setPrimary(player, val);
+        }
     }
 
     public static void activatePrimary(ServerPlayerEntity player, int ticks) {

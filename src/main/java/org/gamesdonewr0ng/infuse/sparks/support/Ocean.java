@@ -31,8 +31,6 @@ public class Ocean extends Spark {
                     true
             ));
         }
-
-//        if (player.isTouchingWater() && )
     }
 
     public void activate(ServerPlayerEntity player) {

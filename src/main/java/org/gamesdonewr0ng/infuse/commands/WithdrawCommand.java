@@ -9,6 +9,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.SparkItems;
+import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
 public class WithdrawCommand {
@@ -34,6 +35,7 @@ Usage options:
                         } else {
                             player.dropItem(item, true);
                         }
+                        SparksHandler.setPrimary(player, "Removed");
                     } else {
                         context.getSource().sendFeedback(() -> Text.literal("No primary to withdraw."), false);
                     }
@@ -55,8 +57,9 @@ Usage options:
                         } else {
                             player.dropItem(item, true);
                         }
+                        SparksHandler.setSupport(player, "Removed");
                     } else {
-                        context.getSource().sendFeedback(() -> Text.literal("No primary to withdraw."), false);
+                        context.getSource().sendFeedback(() -> Text.literal("No support to withdraw."), false);
                     }
                     return Command.SINGLE_SUCCESS;
                 }))
