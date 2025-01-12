@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "b": {
+      "item": "minecraft:sea_lantern"
+    },
+    "c": {
+      "item": "minecraft:heart_of_the_sea"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"blue\", \"italic\": false, \"text\": \"Ocean Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Support Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Grants \", \"extra\": [{\"italic\": true, \"text\": \"Dolphin's Grace\"}]}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Grants \", \"extra\": [{\"italic\": true, \"text\": \"Conduit Power\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"+2 Attack Damage while \", \"extra\": [{\"color\": \"blue\", \"text\": \"in water\"}]}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Regenerate health while \", \"extra\": [{\"color\": \"blue\", \"text\": \"in water\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"30s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"60s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Ocean"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -16776961}
+    }
+  }
+}

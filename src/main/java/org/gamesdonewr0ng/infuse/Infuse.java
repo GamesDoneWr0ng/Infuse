@@ -7,11 +7,14 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 import org.gamesdonewr0ng.infuse.commands.*;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.sparks.primary.Feather;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Infuse implements ModInitializer {
@@ -43,12 +46,26 @@ public class Infuse implements ModInitializer {
                     case 3 -> "Emerald";
                     default -> "";
                 });
+                handler.getPlayer().unlockRecipes(List.of(
+                        Identifier.of("infuse", "emerald_item"),
+                        Identifier.of("infuse", "fire_item"),
+                        Identifier.of("infuse", "ocean_item"),
+                        Identifier.of("infuse", "speed_item"),
+                        Identifier.of("infuse", "feather_item"),
+                        Identifier.of("infuse", "frost_item"),
+                        Identifier.of("infuse", "haste_item"),
+                        Identifier.of("infuse", "heart_item"),
+                        Identifier.of("infuse", "invisibility_item"),
+                        Identifier.of("infuse", "regeneration_item"),
+                        Identifier.of("infuse", "strength_item"),
+                        Identifier.of("infuse", "lightning_item")
+                        ));
             }
         });
 
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
             if (DataHandler.getPrimary((IEntityDataSaver) handler.getPlayer()).equals("Feather")) {
-                ((Feather) SparksHandler.getPrimary(handler.getPlayer())).removeBlocks(handler.getPlayer());
+                ((Feather) Objects.requireNonNull(SparksHandler.getPrimary(handler.getPlayer()))).removeBlocks(handler.getPlayer());
             }
         });
 

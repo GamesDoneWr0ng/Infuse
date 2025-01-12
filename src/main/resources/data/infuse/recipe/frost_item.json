@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:blue_ice"
+    },
+    "b": {
+      "item": "minecraft:powder_snow_bucket"
+    },
+    "c": {
+      "item": "minecraft:tide_armor_trim_smithing_template"
+    },
+    "d": {
+      "item": "minecraft:conduit"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"dark_aqua\", \"italic\": false, \"text\": \"Frost Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Primary Effect\"}",
+        "{\"color\": \"gray\", \"italic\": true, \"text\": \"Speed X\", \"extra\": [{\"italic\": false, \"color\": \"gray\", \"text\": \" on \"}, {\"italic\": false, \"color\": \"dark_aqua\", \"text\": \"Ice\"}, {\"color\": \"gray\", \"text\": \" & \"}, {\"color\": \"gray\", \"italic\": true, \"text\": \"Speed III\"}, {\"italic\": false, \"color\": \"gray\", \"text\": \" on \"}, {\"italic\": false, \"color\": \"aqua\", \"text\": \"Snow\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Inflict \", \"extra\": [{\"italic\": true, \"color\": \"aqua\", \"text\": \"Frostbite\"}, {\"italic\": false, \"color\": \"gray\", \"text\": \" on attacked enemies\"}]}",
+        "{\"color\": \"gray\", \"italic\": true, \"text\": \"+3 Attack damage on frosted enemies\"}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"30s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"90s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Frost"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -16776961}
+    }
+  }
+}

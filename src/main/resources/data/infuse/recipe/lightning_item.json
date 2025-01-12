@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:lightning_rod"
+    },
+    "b": {
+      "item": "minecraft:silence_armor_trim_smithing_template"
+    },
+    "c": {
+      "item": "minecraft:trident"
+    },
+    "d": {
+      "item": "minecraft:creeper_head"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"dark_aqua\", \"italic\": false, \"text\": \"Lightning Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Primary Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Chance to strike enemies with \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"Lightning\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Strike enemies with \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"Lightning\"}, {\"color\": \"gray\", \"text\": \" in a 16 block radius\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"10s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"80s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Lightning"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -256}
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:sugar"
+    },
+    "b": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "c": {
+      "item": "minecraft:rabbit_foot"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"aqua\", \"italic\": false, \"text\": \"Speed Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Support Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Grants \", \"extra\": [{\"italic\": true, \"text\": \"Speed II\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Dash forward\"}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"1s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"15s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Speed"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -4539718}
+    }
+  }
+}

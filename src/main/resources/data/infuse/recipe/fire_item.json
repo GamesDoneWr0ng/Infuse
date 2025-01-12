@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:magma_cream"
+    },
+    "b": {
+      "item": "minecraft:fire_charge"
+    },
+    "c": {
+      "item": "minecraft:crying_obsidian"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"red\", \"italic\": false, \"text\": \"Fire Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Support Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Grants \", \"extra\": [{\"italic\": true, \"text\": \"Fire Resistance\"}]}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"+1 Attack Damage while \", \"extra\": [{\"color\": \"gold\", \"text\": \"on fire\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Regenerate health while \", \"extra\": [{\"color\": \"gold\", \"text\": \"on fire\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"30s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"60s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Fire"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -65536}
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "ded",
+    "cba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:golden_apple"
+    },
+    "b": {
+      "item": "minecraft:honey_bottle"
+    },
+    "c": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "d": {
+      "item": "minecraft:suspicious_stew"
+    },
+    "e": {
+      "item": "minecraft:cake"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"dark_purple\", \"italic\": false, \"text\": \"Regeneration Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Primary Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Grants \", \"extra\": [{\"italic\": true, \"text\": \"Regeneration II\"}, {\"text\": \" when attacking enemies\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Regenerate self and teammates in a 16 block radius\"}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"15s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"80s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Regeneration"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -2142128}
+    }
+  }
+}

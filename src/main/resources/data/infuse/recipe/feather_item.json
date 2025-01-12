@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:feather"
+    },
+    "b": {
+      "item": "minecraft:goat_horn"
+    },
+    "c": {
+      "item": "minecraft:vex_armor_trim_smithing_template"
+    },
+    "d": {
+      "item": "minecraft:trident"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"gray\", \"italic\": false, \"text\": \"Feather Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Primary Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"No fall damage\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Can run on \", \"extra\": [{\"color\": \"blue\", \"text\": \"Water\"}, {\"color\": \"gray\", \"text\": \" & \"}, {\"color\": \"gold\", \"text\": \"Lava\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Burst of \", \"extra\": [{\"italic\": true, \"text\": \"Levitation XXX\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"2s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"30s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Feather"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -8355712}
+    }
+  }
+}
