@@ -68,7 +68,7 @@ public class Infuse implements ModInitializer {
             handler.getPlayer().networkHandler.sendPacket(new ResourcePackSendS2CPacket(
                     UUID.randomUUID(),
                     "https://gamesdonewr0ng.github.io/Infuse/src/main/resources/infusePack.zip",
-                    "8027248b823c01473c037fb764761137dd9a531d",
+                    "6aa6ec90dd73ee137188683d404061b1c765bd45",
                     true,
                     Optional.of(Text.literal("Infuse icons"))));
         });

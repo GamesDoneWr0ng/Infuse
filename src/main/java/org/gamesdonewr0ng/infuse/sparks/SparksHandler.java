@@ -26,57 +26,57 @@ public class SparksHandler {
             String primaryIcon;
             if (DataHandler.getActivePrimary((IEntityDataSaver) player)) {
                 primaryIcon = switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
-                    case "Feather" -> "\uE018";
-                    case "Frost" -> "\uE019";
-                    case "Haste" -> "\uE016";
-                    case "Heart" -> "\uE015";
-                    case "Invisibility" -> "\uE017";
-                    case "Regeneration" -> "\uE021";
-                    case "Strength" -> "\uE014";
-                    case "Lightning" -> "\uE020";
-                        default -> "\uE001";
+                    case "Feather" -> "";
+                    case "Frost" -> "";
+                    case "Haste" -> "";
+                    case "Heart" -> "";
+                    case "Invisibility" -> "";
+                    case "Regeneration" -> "";
+                    case "Strength" -> "";
+                    case "Lightning" -> "";
+                        default -> "";
                 };
             } else {
                 primaryIcon = switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
-                    case "Feather" -> "\uE006";
-                    case "Frost" -> "\uE007";
-                    case "Haste" -> "\uE004";
-                    case "Heart" -> "\uE003";
-                    case "Invisibility" -> "\uE005";
-                    case "Regeneration" -> "\uE009";
-                    case "Strength" -> "\uE002";
-                    case "Lightning" -> "\uE008";
-                    default -> "\uE001";
+                    case "Feather" -> "";
+                    case "Frost" -> "";
+                    case "Haste" -> "";
+                    case "Heart" -> "";
+                    case "Invisibility" -> "";
+                    case "Regeneration" -> "";
+                    case "Strength" -> "";
+                    case "Lightning" -> "";
+                    default -> "";
                 };
             }
             String supportIcon;
             if (DataHandler.getActiveSupport((IEntityDataSaver) player)) {
                 supportIcon = switch (DataHandler.getSupport((IEntityDataSaver) player)) {
-                    case "Emerald" -> "\uE024";
-                    case "Fire" -> "\uE023";
-                    case "Ocean" -> "\uE022";
-                    case "Speed" -> "\uE025";
-                    default -> "\uE001";
+                    case "Emerald" -> "";
+                    case "Fire" -> "";
+                    case "Ocean" -> "";
+                    case "Speed" -> "";
+                    default -> "";
                 };
             } else {
                 supportIcon = switch (DataHandler.getSupport((IEntityDataSaver) player)) {
-                    case "Emerald" -> "\uE012";
-                    case "Fire" -> "\uE011";
-                    case "Ocean" -> "\uE010";
-                    case "Speed" -> "\uE013";
-                    default -> "\uE001";
+                    case "Emerald" -> "";
+                    case "Fire" -> "";
+                    case "Ocean" -> "";
+                    case "Speed" -> "";
+                    default -> "";
                 };
             }
 
-            String primaryCooldownText = primaryCooldown / (60 * 20) + ":" + (primaryCooldown % (60 * 20)) / 20;
-            String supportCooldownText = supportCooldown / (60 * 20) + ":" + (supportCooldown % (60 * 20)) / 20;
+            String primaryCooldownText = primaryCooldown == 0 ? "" : primaryCooldown / (60 * 20) + ":" + (primaryCooldown % (60 * 20)) / 20;
+            String supportCooldownText = supportCooldown == 0 ? "" : supportCooldown / (60 * 20) + ":" + (supportCooldown % (60 * 20)) / 20;
 
             player.networkHandler.sendPacket(new GameMessageS2CPacket(Text.literal("%s %s  %s %s".formatted(
                     primaryCooldownText,
                     primaryIcon,
                     supportIcon,
                     supportCooldownText
-            )).setStyle(Style.EMPTY.withFont(Identifier.of("infuse", "default"))), true));
+            )), true));
         }
 
         boolean activePrimary = DataHandler.getActivePrimary((IEntityDataSaver) player);
