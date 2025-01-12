@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.packet.c2s.common.ResourcePackStatusC2SPacket;
 import net.minecraft.network.packet.s2c.common.ResourcePackSendS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -64,11 +65,12 @@ public class Infuse implements ModInitializer {
                         ));
             }
 
-            UUID uuid = UUID.fromString("infuse");
-            String url = "";
-            String hash = "";
-
-            handler.getPlayer().networkHandler.sendPacket(new ResourcePackSendS2CPacket(uuid, url, hash, true, Optional.of(Text.literal("Infuse icons"))));
+            handler.getPlayer().networkHandler.sendPacket(new ResourcePackSendS2CPacket(
+                    UUID.randomUUID(),
+                    "https://gamesdonewr0ng.github.io/Infuse/src/main/resources/infusePack.zip",
+                    "8027248b823c01473c037fb764761137dd9a531d",
+                    true,
+                    Optional.of(Text.literal("Infuse icons"))));
         });
 
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
