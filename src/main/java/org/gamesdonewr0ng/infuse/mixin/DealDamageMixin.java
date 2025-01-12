@@ -15,6 +15,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
+
 @Mixin(ServerPlayerEntity.class)
 public class DealDamageMixin {
     @Inject(method = "attack", at = @At("HEAD"))
@@ -51,7 +53,7 @@ public class DealDamageMixin {
                     !player.hasVehicle() &&
                     !player.isSprinting() &&
                     player.getAttackCooldownProgress(0.5F) > 0.9F) {
-                if (player.hasStatusEffect(StatusEffects.REGENERATION) && player.getStatusEffect(StatusEffects.REGENERATION).getAmplifier()>1) {return;}
+                if (player.hasStatusEffect(StatusEffects.REGENERATION) && Objects.requireNonNull(player.getStatusEffect(StatusEffects.REGENERATION)).getAmplifier()>1) {return;}
                 player.addStatusEffect(new StatusEffectInstance(
                         StatusEffects.REGENERATION,
                         80,

@@ -48,13 +48,13 @@ Usage options:
                             if (!context.getSource().isExecutedByPlayer()) {
                                 context.getSource().sendFeedback(() -> Text.literal("Need to be a player."), false);
                             }
-                            String output = "";
+                            StringBuilder output = new StringBuilder();
                             for (ServerPlayerEntity player : context.getSource().getServer().getPlayerManager().getPlayerList()) {
                                 if (DataHandler.getTrustList((IEntityDataSaver) context.getSource().getPlayer(), player.getUuid().toString())) {
-                                    output += "\n" + player.getName().getString();
+                                    output.append("\n").append(player.getName().getString());
                                 }
                             }
-                            String finalOutput = output;
+                            String finalOutput = output.toString();
                             context.getSource().sendFeedback(() -> Text.literal(finalOutput), false);
                             return Command.SINGLE_SUCCESS;
                         }))

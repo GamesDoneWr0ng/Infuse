@@ -6,19 +6,21 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.packet.s2c.common.ResourcePackSendS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.gamesdonewr0ng.infuse.commands.*;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.sparks.primary.Feather;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Infuse implements ModInitializer {
-    //private final Logger logger = LoggerFactory.getLogger("Infuse");
+    private final Logger LOGGER = LoggerFactory.getLogger("Infuse");
 
     @Override
     public void onInitialize() {
@@ -61,6 +63,12 @@ public class Infuse implements ModInitializer {
                         Identifier.of("infuse", "lightning_item")
                         ));
             }
+
+            UUID uuid = UUID.fromString("infuse");
+            String url = "";
+            String hash = "";
+
+            handler.getPlayer().networkHandler.sendPacket(new ResourcePackSendS2CPacket(uuid, url, hash, true, Optional.of(Text.literal("Infuse icons"))));
         });
 
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
@@ -70,8 +78,8 @@ public class Infuse implements ModInitializer {
         });
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
-            NbtCompound oldNbt = ((IEntityDataSaver) oldPlayer).getPersistentData();
-            NbtCompound newNbt = ((IEntityDataSaver) newPlayer).getPersistentData();
+            NbtCompound oldNbt = ((IEntityDataSaver) oldPlayer).infuse$getPersistentData();
+            NbtCompound newNbt = ((IEntityDataSaver) newPlayer).infuse$getPersistentData();
             for (String key : oldNbt.getKeys()) {
                 if (key.startsWith("infuse")) {
                     newNbt.put(key, oldNbt.get(key));

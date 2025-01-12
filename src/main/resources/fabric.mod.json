@@ -7,7 +7,7 @@
   "authors": [],
   "contact": {},
   "license": "All-Rights-Reserved",
-  "icon": "assets/infuse/icon.png",
+  "icon": "infusePack/pack.png",
   "environment": "server",
   "entrypoints": {
     "main": [

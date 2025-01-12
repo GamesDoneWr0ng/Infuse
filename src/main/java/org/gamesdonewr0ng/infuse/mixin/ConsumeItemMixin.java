@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 @Mixin(LivingEntity.class)
 public class ConsumeItemMixin {
@@ -23,7 +24,7 @@ public class ConsumeItemMixin {
     private ItemStack onConsume(ItemStack instance, World world, LivingEntity user) {
         if (user instanceof ServerPlayerEntity player) {
             if (instance.getComponents().contains(DataComponentTypes.CUSTOM_DATA)) {
-                NbtCompound customData = instance.getComponents().get(DataComponentTypes.CUSTOM_DATA).copyNbt();
+                NbtCompound customData = Objects.requireNonNull(instance.getComponents().get(DataComponentTypes.CUSTOM_DATA)).copyNbt();
                 if (customData.contains("infuse_ability")) {
                     String support = DataHandler.getSupport((IEntityDataSaver) player);
                     String primary = DataHandler.getPrimary((IEntityDataSaver) player);

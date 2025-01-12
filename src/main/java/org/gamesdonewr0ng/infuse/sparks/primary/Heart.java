@@ -10,6 +10,8 @@ import org.gamesdonewr0ng.infuse.sparks.Spark;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
+import java.util.Objects;
+
 public class Heart extends Spark {
     public int getCooldown() {
         return 60*20;
@@ -17,6 +19,7 @@ public class Heart extends Spark {
 
     public void passive(ServerPlayerEntity player) {
         EntityAttributeInstance attributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+        assert attributeInstance != null;
         if (attributeInstance.hasModifier(Identifier.of("infuse", "heart"))) return;
         attributeInstance.addTemporaryModifier(
                 new EntityAttributeModifier(
@@ -30,6 +33,7 @@ public class Heart extends Spark {
     public void activate(ServerPlayerEntity player) {
         SparksHandler.activatePrimary(player, 30*20);
         EntityAttributeInstance attributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+        assert attributeInstance != null;
         attributeInstance.removeModifier(Identifier.of("infuse", "heart"));
         attributeInstance.addTemporaryModifier(
                 new EntityAttributeModifier(
@@ -46,6 +50,7 @@ public class Heart extends Spark {
         if (DataHandler.getCooldownPrimary((IEntityDataSaver) player) == 0) {
             float health = player.getHealth();
             EntityAttributeInstance attributeInstance = player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+            assert attributeInstance != null;
             attributeInstance.removeModifier(Identifier.of("infuse", "heart"));
             attributeInstance.addTemporaryModifier(
                     new EntityAttributeModifier(
@@ -59,7 +64,7 @@ public class Heart extends Spark {
     }
 
     public void disable(ServerPlayerEntity player, boolean primary) {
-        player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).removeModifier(Identifier.of("infuse", "heart"));
+        Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).removeModifier(Identifier.of("infuse", "heart"));
         super.disable(player, true);
     }
 }

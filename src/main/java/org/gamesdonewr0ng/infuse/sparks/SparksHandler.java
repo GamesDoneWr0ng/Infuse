@@ -19,13 +19,18 @@ public class SparksHandler {
         Spark primary = getPrimary(player);
 
         if (display) {
-            player.networkHandler.sendPacket(new GameMessageS2CPacket(Text.literal("Support %s %s %s Primary %s %s %s".formatted(
-                    DataHandler.getSupport((IEntityDataSaver) player),
-                    DataHandler.getActiveSupport((IEntityDataSaver) player) ? "Active" : "",
-                    DataHandler.getCooldownSupport((IEntityDataSaver) player) / 20,
-                    DataHandler.getPrimary((IEntityDataSaver) player),
-                    DataHandler.getActivePrimary((IEntityDataSaver) player) ? "Active" : "",
-                    DataHandler.getCooldownPrimary((IEntityDataSaver) player) / 20
+            int primaryCooldown = DataHandler.getCooldownPrimary((IEntityDataSaver) player);
+            int supportCooldown = DataHandler.getCooldownSupport((IEntityDataSaver) player);
+            String primaryIcon = "";
+            String supportIcon = "";
+            String primaryCooldownText = primaryCooldown / (60 * 20) + ":" + (primaryCooldown % (60 * 20)) / 20;
+            String supportCooldownText = supportCooldown / (60 * 20) + ":" + (supportCooldown % (60 * 20)) / 20;
+
+            player.networkHandler.sendPacket(new GameMessageS2CPacket(Text.literal("%s %s  %s %s".formatted(
+                    primaryCooldownText,
+                    primaryIcon,
+                    supportIcon,
+                    supportCooldownText
             )), true));
         }
 
@@ -40,12 +45,12 @@ public class SparksHandler {
 
 
         // active ability
-        if (activePrimary) {primary.active(player);}
-        if (activeSupport) {support.active(player);}
+        if (activePrimary && primary != null) {primary.active(player);}
+        if (activeSupport && support != null) {support.active(player);}
 
         boolean offhand = isOffhandActivated(player);
 
-        if (activePrimary && cooldownPrimary == 0) {
+        if (activePrimary && cooldownPrimary == 0 && primary != null) {
             DataHandler.setActivePrimary((IEntityDataSaver) player, false);
             DataHandler.setCooldownPrimary((IEntityDataSaver) player, primary.getCooldown());
         } else if (cooldownPrimary > 0) {
@@ -59,7 +64,7 @@ public class SparksHandler {
             }
         }
 
-        if (activeSupport && cooldownSupport == 0) {
+        if (activeSupport && cooldownSupport == 0 && primary != null) {
             DataHandler.setActiveSupport((IEntityDataSaver) player, false);
             DataHandler.setCooldownSupport((IEntityDataSaver) player, support.getCooldown());
         } else if (cooldownSupport > 0) {

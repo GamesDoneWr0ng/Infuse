@@ -6,12 +6,14 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
+import java.util.Objects;
+
 public class Emerald extends Spark {
     public int getCooldown() {return 5*60*20;}
 
     @Override
     public void passive(ServerPlayerEntity player) {
-        if (player.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE) && player.getStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE).getAmplifier()>2) {return;}
+        if (player.hasStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE) && Objects.requireNonNull(player.getStatusEffect(StatusEffects.HERO_OF_THE_VILLAGE)).getAmplifier()>2) {return;}
         player.addStatusEffect(new StatusEffectInstance(
                 StatusEffects.HERO_OF_THE_VILLAGE,
                 StatusEffectInstance.INFINITE,

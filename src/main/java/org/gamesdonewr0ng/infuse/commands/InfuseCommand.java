@@ -107,6 +107,7 @@ Usage options:
                                             if (player == null) {
                                                 if (context.getSource().isExecutedByPlayer()) {
                                                     player = context.getSource().getPlayer();
+                                                    assert player != null;
                                                 } else {
                                                     context.getSource().sendFeedback(() -> Text.literal("Missing player."), false);
                                                     return Command.SINGLE_SUCCESS;
@@ -134,6 +135,7 @@ Usage options:
                                 .executes(context -> { // setSupport value
                                     if (context.getSource().isExecutedByPlayer()) {
                                         ServerPlayerEntity player = context.getSource().getPlayer();
+                                        assert player != null;
                                         if (StringArgumentType.getString(context, "value").equals("All")) {
                                             for (String item : new String[]{"Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning"}) {
                                                 if (player.getInventory().getEmptySlot() != -1) {

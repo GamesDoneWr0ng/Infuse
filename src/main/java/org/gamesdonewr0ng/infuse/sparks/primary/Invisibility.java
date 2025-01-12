@@ -14,6 +14,7 @@ import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Invisibility extends Spark {
     public int getCooldown() {return 45*20;}
@@ -39,7 +40,7 @@ public class Invisibility extends Spark {
                 false,
                 true
         ));
-        for (ServerPlayerEntity otherPlayer : player.getServer().getPlayerManager().getPlayerList()) {
+        for (ServerPlayerEntity otherPlayer : Objects.requireNonNull(player.getServer()).getPlayerManager().getPlayerList()) {
             if (!player.equals(otherPlayer)) {
                 otherPlayer.networkHandler.sendPacket(
                         new EntityEquipmentUpdateS2CPacket(player.getId(), List.of(
@@ -59,7 +60,7 @@ public class Invisibility extends Spark {
     public void active(ServerPlayerEntity player) {
         DefaultedList<ItemStack> armor = player.getInventory().armor;
         if (DataHandler.getCooldownPrimary((IEntityDataSaver) player) == 0) {
-            for (ServerPlayerEntity otherPlayer : player.getServer().getPlayerManager().getPlayerList()) {
+            for (ServerPlayerEntity otherPlayer : Objects.requireNonNull(player.getServer()).getPlayerManager().getPlayerList()) {
                 if (!player.equals(otherPlayer)) {
                     otherPlayer.networkHandler.sendPacket(
                             new EntityEquipmentUpdateS2CPacket(player.getId(), List.of(

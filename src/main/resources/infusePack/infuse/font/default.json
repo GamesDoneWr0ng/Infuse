@@ -1,0 +1,195 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/empty.png",
+            "ascent": 16,
+            "height": 20,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/strength.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/heart.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/haste.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/invis.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/feather.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/frost.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/thunder.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/regen.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/ocean.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/fire.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/emerald.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/speed.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/strengthspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/heartspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/hastespark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/invisspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/featherspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/frostspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/thunderspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/regenspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/oceanspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/firespark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/emeraldspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/speedspark.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+            
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/ender_icon.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:custom/ender_active.png",
+            "ascent": 18,
+            "height": 24,
+            "chars": [""]
+        }
+
+    ]
+}
