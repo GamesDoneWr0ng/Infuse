@@ -4,10 +4,9 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
-import net.minecraft.util.Identifier;
+import net.minecraft.util.Formatting;
 import org.gamesdonewr0ng.infuse.DataHandler;
 import org.gamesdonewr0ng.infuse.sparks.primary.*;
 import org.gamesdonewr0ng.infuse.sparks.support.*;
@@ -24,19 +23,21 @@ public class SparksHandler {
             int primaryCooldown = DataHandler.getCooldownPrimary((IEntityDataSaver) player);
             int supportCooldown = DataHandler.getCooldownSupport((IEntityDataSaver) player);
             String primaryIcon;
+            Formatting primaryColor;
             if (DataHandler.getActivePrimary((IEntityDataSaver) player)) {
-                primaryIcon = switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
-                    case "Feather" -> "";
-                    case "Frost" -> "";
-                    case "Haste" -> "";
-                    case "Heart" -> "";
-                    case "Invisibility" -> "";
-                    case "Regeneration" -> "";
-                    case "Strength" -> "";
-                    case "Lightning" -> "";
-                        default -> "";
-                };
+                switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
+                    case "Feather"      -> {primaryIcon = "";  primaryColor = Formatting.DARK_GREEN;}
+                    case "Frost"        -> {primaryIcon = "";  primaryColor = Formatting.AQUA;}
+                    case "Haste"        -> {primaryIcon = ""; primaryColor = Formatting.GOLD;}
+                    case "Heart"        -> {primaryIcon = ""; primaryColor = Formatting.DARK_PURPLE;}
+                    case "Invisibility" -> {primaryIcon = "";  primaryColor = Formatting.GRAY;}
+                    case "Regeneration" -> {primaryIcon = ""; primaryColor = Formatting.RED;}
+                    case "Strength"     -> {primaryIcon = ""; primaryColor = Formatting.DARK_RED;}
+                    case "Lightning"    -> {primaryIcon = "";  primaryColor = Formatting.YELLOW;}
+                        default         -> {primaryIcon = ""; primaryColor = Formatting.WHITE;}
+                }
             } else {
+                primaryColor = Formatting.WHITE;
                 primaryIcon = switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
                     case "Feather" -> "";
                     case "Frost" -> "";
@@ -49,16 +50,19 @@ public class SparksHandler {
                     default -> "";
                 };
             }
+
             String supportIcon;
+            Formatting supportColor;
             if (DataHandler.getActiveSupport((IEntityDataSaver) player)) {
-                supportIcon = switch (DataHandler.getSupport((IEntityDataSaver) player)) {
-                    case "Emerald" -> "";
-                    case "Fire" -> "";
-                    case "Ocean" -> "";
-                    case "Speed" -> "";
-                    default -> "";
-                };
+                switch (DataHandler.getSupport((IEntityDataSaver) player)) {
+                    case "Emerald" -> {supportIcon = ""; supportColor = Formatting.GREEN;}
+                    case "Fire"    -> {supportIcon = ""; supportColor = Formatting.GOLD;}
+                    case "Ocean"   -> {supportIcon = ""; supportColor = Formatting.BLUE;}
+                    case "Speed"   -> {supportIcon = ""; supportColor = Formatting.YELLOW;}
+                    default        -> {supportIcon = ""; supportColor = Formatting.WHITE;}
+                }
             } else {
+                supportColor = Formatting.WHITE;
                 supportIcon = switch (DataHandler.getSupport((IEntityDataSaver) player)) {
                     case "Emerald" -> "";
                     case "Fire" -> "";
@@ -68,15 +72,14 @@ public class SparksHandler {
                 };
             }
 
-            String primaryCooldownText = primaryCooldown == 0 ? "" : primaryCooldown / (60 * 20) + ":" + (primaryCooldown % (60 * 20)) / 20;
-            String supportCooldownText = supportCooldown == 0 ? "" : supportCooldown / (60 * 20) + ":" + (supportCooldown % (60 * 20)) / 20;
+            String primaryCooldownText = primaryCooldown == 0 ? "   " : primaryCooldown / (60 * 20) + ":" + (primaryCooldown % (60 * 20)) / 20;
+            String supportCooldownText = supportCooldown == 0 ? "   " : supportCooldown / (60 * 20) + ":" + (supportCooldown % (60 * 20)) / 20;
 
-            player.networkHandler.sendPacket(new GameMessageS2CPacket(Text.literal("%s %s  %s %s".formatted(
-                    primaryCooldownText,
-                    primaryIcon,
-                    supportIcon,
-                    supportCooldownText
-            )), true));
+            player.networkHandler.sendPacket(new GameMessageS2CPacket(
+                    Text.literal(primaryCooldownText).formatted(Formatting.BOLD, primaryColor)
+                    .append(Text.literal(primaryIcon + "  " + supportIcon))
+                    .append(Text.literal(supportCooldownText).formatted(Formatting.BOLD, supportColor))
+                    , true));
         }
 
         boolean activePrimary = DataHandler.getActivePrimary((IEntityDataSaver) player);
