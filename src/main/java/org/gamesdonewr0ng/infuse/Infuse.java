@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.packet.c2s.common.ResourcePackStatusC2SPacket;
 import net.minecraft.network.packet.s2c.common.ResourcePackSendS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -15,13 +14,10 @@ import org.gamesdonewr0ng.infuse.commands.*;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.sparks.primary.Feather;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 public class Infuse implements ModInitializer {
-    private final Logger LOGGER = LoggerFactory.getLogger("Infuse");
 
     @Override
     public void onInitialize() {

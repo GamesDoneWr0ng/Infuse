@@ -23,15 +23,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ServerCommonNetworkHandler.class)
 public class SendPacketMixin {
 
-    //private static final Logger logger = LoggerFactory.getLogger("Packet logger");
-
     @Final @Shadow protected MinecraftServer server;
 
     @Inject(method = "send", at = @At("HEAD"), cancellable = true)
     public void sendPacket(Packet<?> packet, @Nullable PacketCallbacks callbacks, CallbackInfo info) {
-        /*if (!(packet instanceof WorldTimeUpdateS2CPacket || packet instanceof ChunkDataS2CPacket || packet instanceof KeepAliveS2CPacket || packet instanceof GameMessageS2CPacket || packet instanceof EntityS2CPacket)) {
-            logger.info(packet.toString());
-        }*/
         if (packet instanceof EntityEquipmentUpdateS2CPacket equipmentUpdate) {
             for (ServerWorld world : server.getWorlds()) {
                 Entity entity = world.getEntityById(equipmentUpdate.getEntityId());

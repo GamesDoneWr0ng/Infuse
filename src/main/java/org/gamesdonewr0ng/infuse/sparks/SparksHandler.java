@@ -26,28 +26,28 @@ public class SparksHandler {
             Formatting primaryColor;
             if (DataHandler.getActivePrimary((IEntityDataSaver) player)) {
                 switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
-                    case "Feather"      -> {primaryIcon = "";  primaryColor = Formatting.DARK_GREEN;}
-                    case "Frost"        -> {primaryIcon = "";  primaryColor = Formatting.AQUA;}
-                    case "Haste"        -> {primaryIcon = ""; primaryColor = Formatting.GOLD;}
-                    case "Heart"        -> {primaryIcon = ""; primaryColor = Formatting.DARK_PURPLE;}
-                    case "Invisibility" -> {primaryIcon = "";  primaryColor = Formatting.GRAY;}
-                    case "Regeneration" -> {primaryIcon = ""; primaryColor = Formatting.RED;}
-                    case "Strength"     -> {primaryIcon = ""; primaryColor = Formatting.DARK_RED;}
-                    case "Lightning"    -> {primaryIcon = "";  primaryColor = Formatting.YELLOW;}
-                        default         -> {primaryIcon = ""; primaryColor = Formatting.WHITE;}
+                    case "Feather"      -> {primaryIcon = " ";  primaryColor = Formatting.DARK_GREEN;}
+                    case "Frost"        -> {primaryIcon = " ";  primaryColor = Formatting.AQUA;}
+                    case "Haste"        -> {primaryIcon = " "; primaryColor = Formatting.GOLD;}
+                    case "Heart"        -> {primaryIcon = " "; primaryColor = Formatting.DARK_PURPLE;}
+                    case "Invisibility" -> {primaryIcon = " ";  primaryColor = Formatting.GRAY;}
+                    case "Regeneration" -> {primaryIcon = " "; primaryColor = Formatting.RED;}
+                    case "Strength"     -> {primaryIcon = " "; primaryColor = Formatting.DARK_RED;}
+                    case "Lightning"    -> {primaryIcon = " ";  primaryColor = Formatting.YELLOW;}
+                        default         -> {primaryIcon = " "; primaryColor = Formatting.WHITE;}
                 }
             } else {
                 primaryColor = Formatting.WHITE;
                 primaryIcon = switch (DataHandler.getPrimary((IEntityDataSaver) player)) {
-                    case "Feather" -> "";
-                    case "Frost" -> "";
-                    case "Haste" -> "";
-                    case "Heart" -> "";
-                    case "Invisibility" -> "";
-                    case "Regeneration" -> "";
-                    case "Strength" -> "";
-                    case "Lightning" -> "";
-                    default -> "";
+                    case "Feather"      -> " ";
+                    case "Frost"        -> " ";
+                    case "Haste"        -> " ";
+                    case "Heart"        -> " ";
+                    case "Invisibility" -> " ";
+                    case "Regeneration" -> " ";
+                    case "Strength"     -> " ";
+                    case "Lightning"    -> " ";
+                    default             -> " ";
                 };
             }
 
@@ -55,29 +55,29 @@ public class SparksHandler {
             Formatting supportColor;
             if (DataHandler.getActiveSupport((IEntityDataSaver) player)) {
                 switch (DataHandler.getSupport((IEntityDataSaver) player)) {
-                    case "Emerald" -> {supportIcon = ""; supportColor = Formatting.GREEN;}
-                    case "Fire"    -> {supportIcon = ""; supportColor = Formatting.GOLD;}
-                    case "Ocean"   -> {supportIcon = ""; supportColor = Formatting.BLUE;}
-                    case "Speed"   -> {supportIcon = ""; supportColor = Formatting.YELLOW;}
-                    default        -> {supportIcon = ""; supportColor = Formatting.WHITE;}
+                    case "Emerald" -> {supportIcon = " "; supportColor = Formatting.GREEN;}
+                    case "Fire"    -> {supportIcon = " "; supportColor = Formatting.GOLD;}
+                    case "Ocean"   -> {supportIcon = " "; supportColor = Formatting.BLUE;}
+                    case "Speed"   -> {supportIcon = " "; supportColor = Formatting.YELLOW;}
+                    default        -> {supportIcon = " "; supportColor = Formatting.WHITE;}
                 }
             } else {
                 supportColor = Formatting.WHITE;
                 supportIcon = switch (DataHandler.getSupport((IEntityDataSaver) player)) {
-                    case "Emerald" -> "";
-                    case "Fire" -> "";
-                    case "Ocean" -> "";
-                    case "Speed" -> "";
-                    default -> "";
+                    case "Emerald" -> " ";
+                    case "Fire" -> " ";
+                    case "Ocean" -> " ";
+                    case "Speed" -> " ";
+                    default -> " ";
                 };
             }
 
-            String primaryCooldownText = primaryCooldown == 0 ? "   " : primaryCooldown / (60 * 20) + ":" + (primaryCooldown % (60 * 20)) / 20;
-            String supportCooldownText = supportCooldown == 0 ? "   " : supportCooldown / (60 * 20) + ":" + (supportCooldown % (60 * 20)) / 20;
+            String primaryCooldownText = primaryCooldown == 0 ? "     " : primaryCooldown / (60 * 20) + ":" + String.format("%02d", (primaryCooldown % (60 * 20)) / 20);
+            String supportCooldownText = supportCooldown == 0 ? "     " : supportCooldown / (60 * 20) + ":" + String.format("%02d", (supportCooldown % (60 * 20)) / 20);
 
             player.networkHandler.sendPacket(new GameMessageS2CPacket(
-                    Text.literal(primaryCooldownText).formatted(Formatting.BOLD, primaryColor)
-                    .append(Text.literal(primaryIcon + "  " + supportIcon))
+                    Text.literal("").append(Text.literal(primaryCooldownText).formatted(Formatting.BOLD, primaryColor))
+                    .append(Text.literal(primaryIcon + "  " + supportIcon).formatted(Formatting.RESET))
                     .append(Text.literal(supportCooldownText).formatted(Formatting.BOLD, supportColor))
                     , true));
         }
