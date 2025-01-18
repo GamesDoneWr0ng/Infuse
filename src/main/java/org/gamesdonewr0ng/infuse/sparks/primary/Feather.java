@@ -85,4 +85,9 @@ public class Feather extends Spark {
                 true
         ));
     }
+
+    public void disable(ServerPlayerEntity player, boolean primary) {
+        this.removeBlocks(player);
+        super.disable(player, primary);
+    }
 }
