@@ -30,7 +30,8 @@ public abstract class TakeDamageMixin {
                     info.setReturnValue(false);
                     info.cancel();
                 }
-            } else if (support.equals("Fire")) {
+            }
+            if (support.equals("Fire")) {
                 if (source.isIn(DamageTypeTags.IS_FIRE) || source.isIn(DamageTypeTags.BURN_FROM_STEPPING)) {
                     info.setReturnValue(false);
                     info.cancel();
