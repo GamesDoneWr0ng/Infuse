@@ -42,8 +42,6 @@ public class DealDamageMixin {
                     serverWorld.spawnEntity(lightningEntity);
                 }
             }
-        } else if (DataHandler.getSupport((IEntityDataSaver) player).equals("Fire")) {
-            target.setOnFireFor(4);
         } else if (primary.equals("Regeneration")) {
             if (player.fallDistance > 0.0F &&
                     !player.isOnGround() &&
@@ -63,6 +61,9 @@ public class DealDamageMixin {
                         true
                 ));
             }
+        }
+        if (DataHandler.getSupport((IEntityDataSaver) player).equals("Fire")) {
+            target.setOnFireFor(4);
         }
     }
 }
