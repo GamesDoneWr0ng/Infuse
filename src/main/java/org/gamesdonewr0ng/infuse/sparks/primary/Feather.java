@@ -84,6 +84,7 @@ public class Feather extends Spark {
                 true,
                 true
         ));
+        super.activate(player);
     }
 
     public void disable(ServerPlayerEntity player, boolean primary) {

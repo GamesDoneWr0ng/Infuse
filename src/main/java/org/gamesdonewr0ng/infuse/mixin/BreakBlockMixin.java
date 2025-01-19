@@ -46,7 +46,9 @@ public class BreakBlockMixin {
             ) {
                 List<ItemStack> returnValue = info.getReturnValue();
                 for (ItemStack itemStack : returnValue) {
-                    itemStack.setCount(itemStack.getCount() * 2);
+                    if (!itemStack.isOf(state.getBlock().asItem())) {
+                        itemStack.setCount(itemStack.getCount() * 2);
+                    }
                 }
                 info.setReturnValue(returnValue);
             }

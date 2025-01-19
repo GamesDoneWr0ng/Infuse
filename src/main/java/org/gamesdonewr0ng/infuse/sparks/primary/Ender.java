@@ -57,6 +57,7 @@ public class Ender extends Spark {
     public void activate(ServerPlayerEntity player) {
         DataHandler.setActivePrimary((IEntityDataSaver) player, true);
         DataHandler.setCooldownPrimary((IEntityDataSaver) player, 15*20);
+        super.activate(player);
     }
 
     public void active(ServerPlayerEntity player) {

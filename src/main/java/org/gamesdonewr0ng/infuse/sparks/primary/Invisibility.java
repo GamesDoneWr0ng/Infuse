@@ -55,6 +55,7 @@ public class Invisibility extends Spark {
             }
         }
         SparksHandler.activatePrimary(player, 20*20);
+        super.activate(player);
     }
 
     public void active(ServerPlayerEntity player) {

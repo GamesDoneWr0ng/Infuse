@@ -43,6 +43,7 @@ public class Heart extends Spark {
                 )
         );
         player.setHealth(40);
+        super.activate(player);
 
     }
 

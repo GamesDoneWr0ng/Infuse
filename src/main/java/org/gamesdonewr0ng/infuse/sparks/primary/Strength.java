@@ -31,6 +31,7 @@ public class Strength extends Spark {
                 true
         ));
         SparksHandler.activatePrimary(player, 30*20);
+        super.activate(player);
     }
 
     public void disable(ServerPlayerEntity player, boolean primary) {

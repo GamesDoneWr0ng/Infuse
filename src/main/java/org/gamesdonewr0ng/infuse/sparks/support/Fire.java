@@ -13,6 +13,7 @@ public class Fire extends Spark {
 
     public void activate(ServerPlayerEntity player) {
         SparksHandler.activateSupport(player, 30*20);
+        super.activate(player);
     }
 
     public void active(ServerPlayerEntity player) {

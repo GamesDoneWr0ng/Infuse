@@ -34,6 +34,7 @@ public class Emerald extends Spark {
                 true,
                 true
         ));
+        super.activate(player);
     }
 
     public void disable(ServerPlayerEntity player, boolean primary) {

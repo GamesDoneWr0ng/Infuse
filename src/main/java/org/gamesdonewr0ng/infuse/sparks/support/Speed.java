@@ -31,6 +31,7 @@ public class Speed extends Spark {
         player.velocityModified = true; // Ensure server updates the velocity
 
         SparksHandler.activateSupport(player, 20);
+        super.activate(player);
     }
 
     public void disable(ServerPlayerEntity player, boolean primary) {

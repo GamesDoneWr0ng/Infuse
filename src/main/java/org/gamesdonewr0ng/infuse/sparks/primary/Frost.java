@@ -9,6 +9,8 @@ import net.minecraft.util.math.BlockPos;
 import org.gamesdonewr0ng.infuse.sparks.Spark;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 
+import java.util.Objects;
+
 public class Frost extends Spark {
     public int getCooldown() {return 60*20;}
 
@@ -31,7 +33,7 @@ public class Frost extends Spark {
                         ));
                         return;
                     } else if (world.getBlockState(pos).isIn(BlockTags.SNOW)) {
-                        if (player.hasStatusEffect(StatusEffects.SPEED) && player.getStatusEffect(StatusEffects.SPEED).getAmplifier() > 2) {continue;}
+                        if (player.hasStatusEffect(StatusEffects.SPEED) && Objects.requireNonNull(player.getStatusEffect(StatusEffects.SPEED)).getAmplifier() > 2) {continue;}
                         player.addStatusEffect(new StatusEffectInstance(
                                 StatusEffects.SPEED,
                                 40,
@@ -48,5 +50,6 @@ public class Frost extends Spark {
 
     public void activate(ServerPlayerEntity player) {
         SparksHandler.activatePrimary(player, 30*20);
+        super.activate(player);
     }
 }
