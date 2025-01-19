@@ -2,7 +2,10 @@ package org.gamesdonewr0ng.infuse.mixin;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
@@ -38,6 +41,27 @@ public class ConsumeItemMixin {
                             return SparkItems.getItemstack(primary);
                         }
                     }
+                }
+            } else if (DataHandler.getPrimary((IEntityDataSaver) player).equals("Ender") && instance.isOf(Items.DRAGON_BREATH)) {
+                if (!(user.hasStatusEffect(StatusEffects.REGENERATION) && Objects.requireNonNull(user.getStatusEffect(StatusEffects.REGENERATION)).getAmplifier() > 1)) {
+                    player.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.REGENERATION,
+                            200,
+                            1,
+                            false,
+                            true,
+                            true
+                    ));
+                }
+                if (!(user.hasStatusEffect(StatusEffects.ABSORPTION))) {
+                    player.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.ABSORPTION,
+                            4*60*20,
+                            0,
+                            false,
+                            true,
+                            true
+                    ));
                 }
             }
         }

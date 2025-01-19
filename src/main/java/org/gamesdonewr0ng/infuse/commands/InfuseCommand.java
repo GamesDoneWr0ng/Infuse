@@ -113,7 +113,7 @@ Usage options:
                                                     return Command.SINGLE_SUCCESS;
                                                 }
                                                 if (StringArgumentType.getString(context, "value").equals("All")) {
-                                                    for (String item : new String[]{"Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning"}) {
+                                                    for (String item : new String[]{"Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning", "Ender"}) {
                                                         if (player.getInventory().getEmptySlot() != -1) {
                                                             player.giveItemStack(SparkItems.getItemstack(item));
                                                         } else {
@@ -137,7 +137,7 @@ Usage options:
                                         ServerPlayerEntity player = context.getSource().getPlayer();
                                         assert player != null;
                                         if (StringArgumentType.getString(context, "value").equals("All")) {
-                                            for (String item : new String[]{"Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning"}) {
+                                            for (String item : new String[]{"Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning", "Ender"}) {
                                                 if (player.getInventory().getEmptySlot() != -1) {
                                                     player.giveItemStack(SparkItems.getItemstack(item));
                                                 } else {

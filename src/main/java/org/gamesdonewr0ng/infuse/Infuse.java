@@ -57,7 +57,8 @@ public class Infuse implements ModInitializer {
                         Identifier.of("infuse", "invisibility_item"),
                         Identifier.of("infuse", "regeneration_item"),
                         Identifier.of("infuse", "strength_item"),
-                        Identifier.of("infuse", "lightning_item")
+                        Identifier.of("infuse", "lightning_item"),
+                        Identifier.of("infuse", "ender_item")
                         ));
             }
 

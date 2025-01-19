@@ -13,6 +13,8 @@ import org.gamesdonewr0ng.infuse.sparks.Spark;
 import org.gamesdonewr0ng.infuse.sparks.SparksHandler;
 import org.gamesdonewr0ng.infuse.util.IEntityDataSaver;
 
+import java.util.Objects;
+
 public class Regeneration extends Spark {
     public int getCooldown() {return 80*20;}
 
@@ -23,7 +25,7 @@ public class Regeneration extends Spark {
     public void active(ServerPlayerEntity player) {
         if ((DataHandler.getCooldownPrimary((IEntityDataSaver) player) % 20) != 0) {return;}
 
-        if (player.hasStatusEffect(StatusEffects.REGENERATION) && player.getStatusEffect(StatusEffects.REGENERATION).getAmplifier() > 1) {return;}
+        if (player.hasStatusEffect(StatusEffects.REGENERATION) && Objects.requireNonNull(player.getStatusEffect(StatusEffects.REGENERATION)).getAmplifier() > 1) {return;}
         player.addStatusEffect(new StatusEffectInstance(
                 StatusEffects.REGENERATION,
                 60,
@@ -41,7 +43,7 @@ public class Regeneration extends Spark {
                 if (entity == null) {continue;}
                 if (player.distanceTo(entity) <= 16 && entity instanceof ServerPlayerEntity otherPlayer) {
                     if (!DataHandler.getTrustList((IEntityDataSaver) player, otherPlayer.getUuid().toString())) {continue;}
-                    if (otherPlayer.hasStatusEffect(StatusEffects.REGENERATION) && otherPlayer.getStatusEffect(StatusEffects.REGENERATION).getAmplifier() > 1) {return;}
+                    if (otherPlayer.hasStatusEffect(StatusEffects.REGENERATION) && Objects.requireNonNull(otherPlayer.getStatusEffect(StatusEffects.REGENERATION)).getAmplifier() > 1) {return;}
                     otherPlayer.addStatusEffect(new StatusEffectInstance(
                             StatusEffects.REGENERATION,
                             60,

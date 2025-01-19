@@ -32,7 +32,8 @@ public class SparksHandler {
                     case "Regeneration" -> {primaryIcon = " "; primaryColor = Formatting.RED;}
                     case "Strength"     -> {primaryIcon = " "; primaryColor = Formatting.DARK_RED;}
                     case "Lightning"    -> {primaryIcon = " ";  primaryColor = Formatting.YELLOW;}
-                        default         -> {primaryIcon = " "; primaryColor = Formatting.WHITE;}
+                    case "Ender"        -> {primaryIcon = " "; primaryColor = Formatting.DARK_PURPLE;}
+                    default             -> {primaryIcon = " "; primaryColor = Formatting.WHITE;}
                 }
             } else {
                 primaryColor = Formatting.WHITE;
@@ -45,6 +46,7 @@ public class SparksHandler {
                     case "Regeneration" -> " ";
                     case "Strength"     -> " ";
                     case "Lightning"    -> " ";
+                    case "Ender"        -> " ";
                     default             -> " ";
                 };
             }
@@ -89,6 +91,23 @@ public class SparksHandler {
         // active ability
         if (activePrimary && primary != null) {primary.active(player);}
         if (activeSupport && support != null) {support.active(player);}
+
+        int cooldownPrimary = DataHandler.getCooldownPrimary((IEntityDataSaver) player);
+        int cooldownSupport = DataHandler.getCooldownSupport((IEntityDataSaver) player);
+
+        if (activePrimary && cooldownPrimary == 0 && primary != null) {
+            DataHandler.setActivePrimary((IEntityDataSaver) player, false);
+            DataHandler.setCooldownPrimary((IEntityDataSaver) player, primary.getCooldown());
+        } else if (cooldownPrimary > 0) {
+            DataHandler.setCooldownPrimary((IEntityDataSaver) player, cooldownPrimary - 1);
+        }
+
+        if (activeSupport && cooldownSupport == 0 && support != null) {
+            DataHandler.setActiveSupport((IEntityDataSaver) player, false);
+            DataHandler.setCooldownSupport((IEntityDataSaver) player, support.getCooldown());
+        } else if (cooldownSupport > 0) {
+            DataHandler.setCooldownSupport((IEntityDataSaver) player, cooldownSupport - 1);
+        }
     }
 
     public static void setSupport(ServerPlayerEntity player, String val) {
@@ -131,6 +150,7 @@ public class SparksHandler {
             case "Frost" -> new Frost();
             case "Feather" -> new Feather();
             case "Invisibility" -> new Invisibility();
+            case "Ender" -> new Ender();
             default -> null;
         };
     }

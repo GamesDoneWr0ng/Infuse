@@ -2,6 +2,7 @@ package org.gamesdonewr0ng.infuse.mixin;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.gamesdonewr0ng.infuse.DataHandler;
@@ -20,15 +21,26 @@ public abstract class TakeDamageMixin {
         if ((Object) this instanceof ServerPlayerEntity player) {
             String primary = DataHandler.getPrimary((IEntityDataSaver) player);
             String support = DataHandler.getSupport((IEntityDataSaver) player);
-            if (primary.equals("Lightning")) {
-                if (source.isIn(DamageTypeTags.IS_LIGHTNING)) {
-                    info.setReturnValue(false);
-                    info.cancel();
+            switch (primary) {
+                case "Lightning" -> {
+                    if (source.isIn(DamageTypeTags.IS_LIGHTNING)) {
+                        info.setReturnValue(false);
+                        info.cancel();
+                    }
                 }
-            } else if (primary.equals("Feather")) {
-                if (source.isIn(DamageTypeTags.IS_FALL)) {
-                    info.setReturnValue(false);
-                    info.cancel();
+                case "Feather" -> {
+                    if (source.isIn(DamageTypeTags.IS_FALL)) {
+                        info.setReturnValue(false);
+                        info.cancel();
+                    }
+                }
+                case "Ender" -> {
+                    if (source.isOf(DamageTypes.INDIRECT_MAGIC) && source.getAttacker() instanceof ServerPlayerEntity attacker) {
+                        if (player == attacker || DataHandler.getTrustList((IEntityDataSaver) attacker, player.getUuid().toString())) {
+                            info.setReturnValue(false);
+                            info.cancel();
+                        }
+                    }
                 }
             }
             if (support.equals("Fire")) {

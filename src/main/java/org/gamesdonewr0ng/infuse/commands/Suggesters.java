@@ -8,8 +8,8 @@ import net.minecraft.util.Identifier;
 
 public class Suggesters {
     private static final String[] supports = {"Speed", "Ocean", "Fire", "Emerald"};
-    private static final String[] primaries = {"Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning"};
-    private static final String[] abilities = {"All", "Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning"};
+    private static final String[] primaries = {"Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning", "Ender"};
+    private static final String[] abilities = {"All", "Speed", "Ocean", "Fire", "Emerald", "Feather", "Frost", "Haste", "Heart", "Invisibility", "Regeneration", "Strength", "Lightning", "Ender"};
 
     public static final SuggestionProvider<ServerCommandSource> SUPPORT = SuggestionProviders.register(
             Identifier.of("infuse", "support_suggestion_provider"),

@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aca",
+    "beb",
+    "ada"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:dragon_breath"
+    },
+    "b": {
+      "item": "minecraft:ender_eye"
+    },
+    "c": {
+      "item": "minecraft:dragon_head"
+    },
+    "d": {
+      "item": "minecraft:elytra"
+    },
+    "e": {
+      "item": "minecraft:dragon_egg"
+    }
+  },
+  "result": {
+    "id": "minecraft:potion",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"color\": \"dark_purple\", \"italic\": false, \"text\": \"Ender Effect\"}",
+      "minecraft:lore": [
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Primary Effect\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Give players in a 64 block radius \", \"extra\": [{\"color\": \"yellow\", \"text\": \"Glow\"}]}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Grants \", \"extra\": [{\"italic\": true, \"text\": \"Resistance I\"}, {\"text\": \" after \"}, {\"color\": \"dark_purple\", \"text\": \"Pearling\"}]}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Can drink \", \"extra\": [{\"color\": \"yellow\", \"text\": \"Dragon's Breath\"}]}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"blue\", \"italic\": false, \"text\": \"Spark Ability\"}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"Evoke \", \"extra\": [{\"color\": \"dark_purple\", \"text\": \"Dragon's Aura\"}]}",
+        "{\"color\": \"gray\", \"italic\": false, \"text\": \"damaging nearby players\"}",
+        "{\"text\": \"\"}",
+        "{\"color\": \"dark_gray\", \"italic\": false, \"text\": \"Duration: \", \"extra\": [{\"color\": \"dark_aqua\", \"text\": \"15s \"}, {\"color\": \"dark_gray\", \"text\": \"Cooldown: \"}, {\"color\": \"dark_aqua\", \"text\": \"120s\"}]}"
+      ],
+      "minecraft:custom_data": {"infuse_ability": "Ender"},
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:potion_contents": {"id": "minecraft:potion", "custom_color": -700056}
+    }
+  }
+}

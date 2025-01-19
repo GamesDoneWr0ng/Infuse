@@ -210,6 +210,24 @@ public class SparkItems {
                     .add(DataComponentTypes.POTION_CONTENTS, new PotionContentsComponent(Optional.empty(), Optional.of(Colors.YELLOW), List.of()))
                     .add(DataComponentTypes.CUSTOM_DATA, nbtComponent)
                     .build());
+
+            case "Ender" -> item.applyComponentsFrom(ComponentMap.builder()
+                    .add(DataComponentTypes.ENCHANTMENT_GLINT_OVERRIDE, true)
+                    .add(DataComponentTypes.CUSTOM_NAME, Text.literal("Ender Effect").setStyle(NON_ITALIC).formatted(Formatting.DARK_PURPLE))
+                    .add(DataComponentTypes.LORE, new LoreComponent(List.of(
+                            Text.literal("Primary Effect").setStyle(NON_ITALIC).formatted(Formatting.BLUE),
+                            Text.literal("Give players in a 64 block radius ").setStyle(NON_ITALIC).formatted(Formatting.GRAY).append(Text.literal("Glow").formatted(Formatting.YELLOW)),
+                            Text.literal("Grants ").setStyle(NON_ITALIC).formatted(Formatting.GRAY).append(Text.literal("Resistance I").formatted(Formatting.ITALIC)).append(" after ").append(Text.literal("Pearling").formatted(Formatting.DARK_PURPLE)),
+                            Text.literal("Can drink ").setStyle(NON_ITALIC).formatted(Formatting.GRAY).append(Text.literal("Dragon's Breath").formatted(Formatting.YELLOW)),
+                            Text.empty(),
+                            Text.literal("Spark Ability").setStyle(NON_ITALIC).formatted(Formatting.BLUE),
+                            Text.literal("Evoke ").setStyle(NON_ITALIC).formatted(Formatting.GRAY).append(Text.literal("Dragon's Aura").formatted(Formatting.DARK_PURPLE)),
+                            Text.literal("damaging nearby players").setStyle(NON_ITALIC).formatted(Formatting.GRAY),
+                            Text.empty(),
+                            Text.literal("Duration: ").setStyle(NON_ITALIC).formatted(Formatting.DARK_GRAY).append(Text.literal("15s ").formatted(Formatting.DARK_AQUA)).append(Text.literal("Cooldown: ").formatted(Formatting.DARK_GRAY)).append(Text.literal("120s").formatted(Formatting.DARK_AQUA)))))
+                    .add(DataComponentTypes.POTION_CONTENTS, new PotionContentsComponent(Optional.empty(), Optional.of(-700056), List.of()))
+                    .add(DataComponentTypes.CUSTOM_DATA, nbtComponent)
+                    .build());
         }
 
         return item;

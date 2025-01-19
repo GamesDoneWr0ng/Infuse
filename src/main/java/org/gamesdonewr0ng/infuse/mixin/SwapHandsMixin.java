@@ -30,11 +30,11 @@ public class SwapHandsMixin {
             Spark support = SparksHandler.getSupport(player);
             if (player.isSneaking() && support != null) {
                 if (DataHandler.getCooldownSupport((IEntityDataSaver) player) == 0) {
-                    support.active(player);
+                    support.activate(player);
                 }
             } else if (primary != null) {
                 if (DataHandler.getCooldownPrimary((IEntityDataSaver) player) == 0) {
-                    primary.active(player);
+                    primary.activate(player);
                 }
             }
         }
