@@ -1,7 +1,5 @@
 package org.gamesdonewr0ng.infuse.sparks;
 
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -82,67 +80,15 @@ public class SparksHandler {
                     , true));
         }
 
-        boolean activePrimary = DataHandler.getActivePrimary((IEntityDataSaver) player);
-        int cooldownPrimary = DataHandler.getCooldownPrimary((IEntityDataSaver) player);
-
-        boolean activeSupport = DataHandler.getActiveSupport((IEntityDataSaver) player);
-        int cooldownSupport = DataHandler.getCooldownSupport((IEntityDataSaver) player);
-
         if (primary != null) {primary.passive(player);}
         if (support != null) {support.passive(player);}
 
+        boolean activePrimary = DataHandler.getActivePrimary((IEntityDataSaver) player);
+        boolean activeSupport = DataHandler.getActiveSupport((IEntityDataSaver) player);
 
         // active ability
         if (activePrimary && primary != null) {primary.active(player);}
         if (activeSupport && support != null) {support.active(player);}
-
-        boolean offhand = isOffhandActivated(player);
-
-        if (activePrimary && cooldownPrimary == 0 && primary != null) {
-            DataHandler.setActivePrimary((IEntityDataSaver) player, false);
-            DataHandler.setCooldownPrimary((IEntityDataSaver) player, primary.getCooldown());
-        } else if (cooldownPrimary > 0) {
-            DataHandler.setCooldownPrimary((IEntityDataSaver) player, cooldownPrimary - 1);
-        } else {
-            if (primary != null && offhand) {
-                // Check if the player is sneaking
-                if (!player.isSneaking()) {
-                    primary.activate(player);
-                }
-            }
-        }
-
-        if (activeSupport && cooldownSupport == 0 && support != null) {
-            DataHandler.setActiveSupport((IEntityDataSaver) player, false);
-            DataHandler.setCooldownSupport((IEntityDataSaver) player, support.getCooldown());
-        } else if (cooldownSupport > 0) {
-            DataHandler.setCooldownSupport((IEntityDataSaver) player, cooldownSupport - 1);
-        } else {
-            if (support != null && offhand) {
-                // Check if the player is sneaking
-                if (player.isSneaking()) {
-                    support.activate(player);
-                }
-            }
-        }
-    }
-
-    public static boolean isOffhandActivated(ServerPlayerEntity player) {
-        if (player.getOffHandStack().getCount() == 0) {
-            return false;
-        }
-        if (player.getMainHandStack().getCount() == 0) {
-            player.getInventory().setStack(player.getInventory().selectedSlot, player.getOffHandStack()); // return item
-        } else {
-            int slot = player.getInventory().getEmptySlot();
-            if (slot != -1 && slot != PlayerInventory.OFF_HAND_SLOT) {
-                player.getInventory().setStack(slot, player.getOffHandStack()); // something in main hand
-            } else {
-                player.dropItem(player.getOffHandStack(), true); // no space in inventory
-            }
-        }
-        player.getInventory().setStack(PlayerInventory.OFF_HAND_SLOT, ItemStack.EMPTY);
-        return true;
     }
 
     public static void setSupport(ServerPlayerEntity player, String val) {
