@@ -85,6 +85,9 @@ public class Infuse implements ModInitializer {
                 }
             }
 
+            if (oldPlayer.getWorld().getRegistryKey() != newPlayer.getWorld().getRegistryKey()) {
+                return; // end portal
+            }
             if (Math.random() > 0.5F) {
                 SparksHandler.setSupport(newPlayer, "Removed");
             } else {
